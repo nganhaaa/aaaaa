@@ -7,6 +7,13 @@ public class DigitalVideoDiscNNH {
     private String director;
     private float price;
 
+    private static int nbDigitalVideoDiscs = 0;
+	private int id;
+
+    public int getIdNNH() {
+        return this.id;
+    }
+
     public String getTitleNNH() {
         return this.title;
     }
@@ -27,23 +34,55 @@ public class DigitalVideoDiscNNH {
         return this.price;
     }
 
+    public void setTitleNNH(String title) {
+        this.title = title;
+    }
+
+    	
+	public boolean isMatch(String keyword)
+	{
+		return this.title.toLowerCase().contains(keyword.toLowerCase());
+	}
+
     public DigitalVideoDiscNNH(String title) {
-        this.title = title;
-    }
+		super();
+		this.title = title;
+		this.id = ++nbDigitalVideoDiscs;
+	}
+	public DigitalVideoDiscNNH(String title, String category, float price) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.price = price;
+		this.id = ++nbDigitalVideoDiscs;
+	}
+	public DigitalVideoDiscNNH(String title, String category, String director, float price) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.director = director;
+		this.price = price;
+		this.id = ++nbDigitalVideoDiscs;
+	}
+	public DigitalVideoDiscNNH(String title, String category, String director, int length, float price) {
+		super();
+		this.title = title;
+		this.category = category;
+		this.director = director;
+		this.length = length;
+		this.price = price;
+		this.id = ++nbDigitalVideoDiscs;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return this.id + ". DVD: " + this.title +
+				" - Category: " + this.category +
+				" - Director: " + this.title +
+				" - DVD length: " + this.length +
+				" - Cost: " + this.price + "$";
+	}
 
-    public DigitalVideoDiscNNH(String title, String category, float price) {
-        this.title = title;
-        this.category = category;
-        this.price = price;
-    }
-
-    public DigitalVideoDiscNNH(String director, String category, String title, float price) {
-        this(title, category, price);
-        this.director = director;
-    }
-
-    public DigitalVideoDiscNNH(String title, String category, String director, int length, float price) {
-        this(director, category, title, price);
-        this.length = length;
-    }
+    
 }
